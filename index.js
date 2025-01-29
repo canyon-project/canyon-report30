@@ -15,19 +15,16 @@ module.exports = class CustomReporter extends ReportBase {
     this.coverage[fileCoverage.path] = fileCoverage;
   }
 
-  async onEnd() {
-    const covPath = path.join(process.cwd(), "coverage/coverage-final.json");
+  async onEnd(rootNode, context) {
 
-    // 检查covPath是否存在，如果不存在则创建
-    if (!fs.existsSync(path.dirname(covPath))) {
-      fs.writeFileSync(covPath, JSON.stringify(this.coverage));
-      // TODO 应该通过内存传过来
-      console.log("新创建的");
-    }
+
 
     const ccr = CCR({
     });
     await ccr.add({});
-    await ccr.generate();
+    await ccr.generate({
+      coverage: this.coverage,
+      targetDir: context.dir
+    });
   }
 };

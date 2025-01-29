@@ -1,16 +1,16 @@
 {
-  "name": "canyon-test",
+  "name": "canyon-report30",
   "version": "0.0.1-beta.2",
   "description": "Canyon's Coverage Reporting Toolkit",
   "main": "./index.js",
   "files": [
     "dist",
     "lib",
-    "html-spa.js"
+    "index.js"
   ],
   "scripts": {
     "test": "node ./lib/cli.js ccr",
-    "do-build": "webpack --mode=production --node-env=production",
+    "build": "webpack --mode=production --node-env=production",
     "dev": "webpack serve",
     "prepublishOnly": "webpack --mode=production --node-env=production"
   },
